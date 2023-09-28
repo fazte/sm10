@@ -7,7 +7,6 @@ let link = document.getElementById('link');
 let link1 = document.getElementById('link1');
 
 
-
 form.addEventListener('submit', function(event){
     
     lablename.innerHTML="";
@@ -19,17 +18,31 @@ form.addEventListener('submit', function(event){
         lablename.style.color = "red";
         // let err = ''
 
+    }else if(isNaN(date.value)){
+        date.style.border = "1px solid red"
+        labledate.insertAdjacentHTML('beforeend','ЧИСЛО, А НЕ БУКВУ')
+        labledate.style.color = "red";
+        // let err = ''
     }else if(date.value == ""){
+			date.style.border = "1px solid red"
+			labledate.insertAdjacentHTML('beforeend','Введите год рождения')
+			labledate.style.color = "red";
+			// let err = ''
+		}else if(date.value.length > 4){
+			date.style.border = "1px solid red"
+			labledate.insertAdjacentHTML('beforeend','Ты на приколе, меньше 4 нада')
+			labledate.style.color = "red";
+			// let err = ''
+		}else if((2023 - date.value) < 18){
         date.style.border = "1px solid red"
-        labledate.insertAdjacentHTML('beforeend','Введите год рождения')
+        labledate.insertAdjacentHTML('beforeend','Вам нет 18 лет, не пытайся меня обмануть')
         labledate.style.color = "red";
         // let err = ''
-    }else if((2023 - date.value) < 18){
-        date.style.border = "1px solid red"
-        labledate.insertAdjacentHTML('beforeend','Вам нет 18 лет')
-        labledate.style.color = "red";
-        // let err = ''
-    }else{
+    }else if((2023 - date.value) > 100){
+			date.style.border = "1px solid red"
+			labledate.insertAdjacentHTML('beforeend','Ну ты и старый, а так  ')
+			labledate.style.color = "red";
+			// let err = ''
         date.style.border = "1px solid black";
         labledate.insertAdjacentHTML('beforeend','Дата Гуд')
         labledate.style.color = "black";
